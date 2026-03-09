@@ -1,11 +1,13 @@
+require('dotenv').config()
 const express = require('express');
+const connectDB = require("./src/config/db")
+const userRoutes = require("./src/routes/userRoutes")
 const app = express();
 
-const PORT = 4000;
-
-app.get('/', (req, res) => {
-  res.send('4567890-=');
-});
+const PORT = process.env.Port
+connectDB()
+app.use(express.json());
+app.use('/spendx/api/user',userRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
