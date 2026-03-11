@@ -1,20 +1,26 @@
 const bcrypt = require("bcrypt");
 const Users = require("../models/userSchema")
 
-const userRegistration =  async (req,res) => {
+const userRegistration =  async (req,res,next) => {
    
     const { email, password } = req.body;
   try {
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({ success: false, message: "email and password are required" });
+      // return res
+      //   .status(400)
+      //   .json({ success: false, message: "email and password are required" });
+      const error = new Error("email and password are required");
+      error.statusCode = 400;
+      throw error;
     }
     const existingUser= await Users.findOne({ email });
     if (existingUser) {
-      return res
-        .status(409)
-        .json({ success: false, message: "mail id already in use" });
+      // return res
+      //   .status(409)
+      //   .json({ success: false, message: "mail id already in use" });
+      const error = new Error("mail id already in use");
+      error.statusCode = 409;
+      throw error;
     }
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = await Users.create({
@@ -26,12 +32,16 @@ const userRegistration =  async (req,res) => {
       message: "user registered successfully",
       data: { email: newUser.email},
     });
-  } catch (error) {
-    console.error("Error saving user data:", error);
-    return res
-      .status(500)
-      .json({ success: false, message: "Internal Server Error" });
+  } catch (err) {
+   
+    if (!err.statusCode) {
+    err.message = `Failed to register user: ${err.message}`;
+    err.statusCode = 500;
   }
+  next(err);
+    next(err);
+  }
+  
 
 }
 
