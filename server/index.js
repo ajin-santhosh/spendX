@@ -3,12 +3,15 @@ const express = require('express');
 const connectDB = require("./src/config/db")
 const errorHandler = require("./src/middleware/errorHandler")
 const userRoutes = require("./src/routes/userRoutes")
+const mailRoutes = require ("./src/routes/mailRoutes")
 const app = express();
 
 const PORT = process.env.Port
 connectDB()
 app.use(express.json());
 app.use('/spendx/api/user',userRoutes)
+app.use('/spendx/api/mail',mailRoutes)
+
 
 app.use(errorHandler);
 app.listen(PORT, () => {

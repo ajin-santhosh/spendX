@@ -13,15 +13,6 @@ const userRegistration =  async (req,res,next) => {
       error.statusCode = 400;
       throw error;
     }
-    const existingUser= await Users.findOne({ email });
-    if (existingUser) {
-      // return res
-      //   .status(409)
-      //   .json({ success: false, message: "mail id already in use" });
-      const error = new Error("mail id already in use");
-      error.statusCode = 409;
-      throw error;
-    }
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = await Users.create({
       email,
@@ -39,7 +30,6 @@ const userRegistration =  async (req,res,next) => {
     err.statusCode = 500;
   }
   next(err);
-    next(err);
   }
   
 
