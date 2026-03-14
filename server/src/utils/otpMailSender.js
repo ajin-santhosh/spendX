@@ -1,9 +1,8 @@
-// const Users = require("../models/userSchema");
 const axios = require("axios");
 
-const otpGenerator = async (req, res, next) => {
 
-   const {email} =  req.body
+const sendMail = async (email, otp) => {
+
   try {
     const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
@@ -13,11 +12,8 @@ const otpGenerator = async (req, res, next) => {
           email: process.env.spendX_Email,
         },
         to: [{ email: email }],
-        templateId: JnD82OipFmu.AwJaQMuNYIfhFFb9AXlfRowViqRke91yljX0MJzk1qUvcA,
-        params: {
-         " contact.SMS": "hai",
-         " contact.EMAIL": email 
-        },
+        subject: "Your OTP Code",
+        htmlContent: `<h1>Hello Your Otp is ${otp}</h1>`
       },
       {
         headers: {
@@ -29,15 +25,12 @@ const otpGenerator = async (req, res, next) => {
     );
 
     // console.log("MAIL SENT ✅", response.data);
-    return res.status(201).json({
-      success: true,
-      message: "mail sended",
-    });
+    return true
   } catch (err) {
     err.message = `Failed to send mail`;
     err.statusCode = 500;
-    next(err);
+    throw err
   }
-};
 
-module.exports = { otpGenerator };
+}
+module.exports = sendMail
