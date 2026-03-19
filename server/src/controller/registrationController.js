@@ -39,7 +39,7 @@ const otpSender = async (req, res, next) => {
       message: `mail sended with otp ${otp}`,
     });
   } catch (err) {
-    err.message = `Failed to send mail`;
+    err.message = `Failed to send e mail or genrate otp`;
     err.statusCode = 500;
     next(err);
   }
@@ -60,7 +60,7 @@ const otpReSender = async (req, res, next) => {
     console.log("MAIL SENT ✅");
     return res.status(201).json({
       success: true,
-      message: `mail re sended with otp ${otp}`,
+      message: `emmail resended with otp ${otp}`,
     });
   } catch (err) {
     err.message = `Failed to send mail`;

@@ -7,5 +7,6 @@ router.post(
   userExist.userCheck,
   userController.userRegistration,
 );
+router.post("/login",  userController.userLogin);
 
 module.exports = router;
