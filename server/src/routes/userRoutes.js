@@ -1,12 +1,15 @@
-const express = require("express");
+import express from "express";
+import userController from "../controller/userController.js";
+import userExist from "../middleware/userExistCheckHandler.js";
+
 const router = express.Router();
-const userController = require("../controller/userController");
-const userExist = require("../middleware/userExistCheckHandler");
+
 router.post(
   "/userRegistration",
   userExist.userCheck,
-  userController.userRegistration,
+  userController.userRegistration
 );
-router.post("/login",  userController.userLogin);
 
-module.exports = router;
+router.post("/login", userController.userLogin);
+
+export default router;

@@ -1,9 +1,9 @@
-const crypto = require("crypto");
-const Otp = require("../models/otpSchema");
-const sendMail = require("../utils/otpMailSender");
+import crypto from "crypto";
+import Otp from "../models/otpSchema.js";
+import sendMail from "../utils/otpMailSender.js";
 
 function generateOTP() {
-  length = 6;
+ const length = 6;
   const digits = "0123456789";
   let otp = "";
 
@@ -21,12 +21,13 @@ const otpSender = async (req, res, next) => {
 
   try {
     const otp = generateOTP();
+        console.log("Generated OTP:", otp);
+
     const otpDoc = new Otp({
       email,
       otp,
     });
     await otpDoc.save();
-    console.log("Generated OTP:", otp);
 
     const sendEmail = await sendMail(email, otp);
     if (!sendEmail) {
@@ -68,4 +69,4 @@ const otpReSender = async (req, res, next) => {
     next(err);
   }
 };
-module.exports = { otpSender, otpReSender };
+export default { otpSender, otpReSender };

@@ -1,5 +1,5 @@
-const bcrypt = require("bcrypt");
-const Users = require("../models/userSchema");
+import bcrypt from "bcrypt"
+import Users from "../models/userSchema.js"
 
 const userRegistration = async (req, res, next) => {
   const { email, password } = req.body;
@@ -65,4 +65,4 @@ const userLogin = async (req, res, next) => {
   }
 };
 
-module.exports = { userRegistration, userLogin };
+export default { userRegistration, userLogin };

@@ -1,9 +1,10 @@
-require('dotenv').config()
-const express = require('express');
-const connectDB = require("./src/config/db")
-const errorHandler = require("./src/middleware/errorHandler")
-const userRoutes = require("./src/routes/userRoutes")
-const registrationRoutes = require ("./src/routes/registrationRoutes")
+import 'dotenv/config';
+import express from 'express';
+
+import connectDB from "./src/config/db.js";
+import errorHandler from "./src/middleware/errorHandler.js";
+import userRoutes from "./src/routes/userRoutes.js";
+import registrationRoutes from "./src/routes/registrationRoutes.js";
 const app = express();
 
 const PORT = process.env.Port

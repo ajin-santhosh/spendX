@@ -1,12 +1,15 @@
-const express = require("express");
+import express from "express";
+import registrationController from "../controller/registrationController.js";
+import mailExist from "../middleware/userExistCheckHandler.js";
+
 const router = express.Router();
-const registrationController = require("../controller/registrationController");
-const mailExist = require("../middleware/userExistCheckHandler");
+
 router.post(
   "/otpMailSend",
   mailExist.emailCheck,
-  registrationController.otpSender,
+  registrationController.otpSender
 );
+
 router.post("/otpMailReSend", registrationController.otpReSender);
 
-module.exports = router;
+export default router;

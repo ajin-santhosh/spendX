@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios" 
 
 
 const sendMail = async (email, otp) => {
@@ -33,4 +33,4 @@ const sendMail = async (email, otp) => {
   }
 
 }
-module.exports = sendMail
+export default sendMail
