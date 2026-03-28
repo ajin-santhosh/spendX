@@ -1,5 +1,6 @@
 import Users from "../models/userSchema.js";
 import Otp from "../models/otpSchema.js"
+
 const userCheck = async (req, res, next) => {
   const { email, password } = req.body;
   if (password.length < 6) {

@@ -1,15 +1,19 @@
 import express from "express";
 import registrationController from "../controller/registrationController.js";
-import mailExist from "../middleware/userExistCheckHandler.js";
+import userExistCheckHandler from "../middleware/userExistCheckHandler.js";
 
 const router = express.Router();
-
+router.post(
+  "/userRegistration",
+  userExistCheckHandler.userCheck,
+  registrationController.userRegistration,
+);
 router.post(
   "/otpMailSend",
-  mailExist.emailCheck,
-  registrationController.otpSender
+  userExistCheckHandler.emailCheck,
+  registrationController.otpSender,
 );
 
 router.post("/otpMailReSend", registrationController.otpReSender);
-
+router.post("/otpVerifier", registrationController.otpVerifier);
 export default router;
