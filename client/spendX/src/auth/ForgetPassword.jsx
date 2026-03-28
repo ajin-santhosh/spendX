@@ -8,7 +8,7 @@ import NewPassCreate from "./NewPassCreate";
 import { useState } from "react";
 
 function ForgetPassword() {
-  const [step, setStep] =useState(1)
+  const [step, setStep] = useState(1);
   return (
     <>
       <div className="grid min-h-svh lg:grid-cols-2">
@@ -25,35 +25,22 @@ function ForgetPassword() {
             <div className="w-full max-w-xs">
               {
                 <>
-               
-                {
-                  step === 1 &&(
-              <TempPassgenerate onNext={() => setStep(2)} />
+                  {step === 1 && <TempPassgenerate onNext={() => setStep(2)} />}
 
-                  )
-                }
-                
-                {
-                  step === 2 &&(
-              <TempPassVerify 
-              onNext={() => setStep(3)} 
-              // onBack={() => setStep(1)}
-              />
-
-                  )
-                }
-                {
-                  step === 3 &&(
-              <NewPassCreate 
-              // onNext={() => setStep(3)} 
-              // onBack={() => setStep(2)}
-              />
-
-                  )
-                }
-                
-                 </>
-               }
+                  {step === 2 && (
+                    <TempPassVerify
+                      onNext={() => setStep(3)}
+                      // onBack={() => setStep(1)}
+                    />
+                  )}
+                  {step === 3 && (
+                    <NewPassCreate
+                    // onNext={() => setStep(3)}
+                    // onBack={() => setStep(2)}
+                    />
+                  )}
+                </>
+              }
             </div>
           </div>
         </div>
