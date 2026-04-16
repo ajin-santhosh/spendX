@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
@@ -8,18 +8,22 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"]
+      match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"],
     },
     password: {
       type: String,
       required: true,
-      minlength: 6
-    }
+      minlength: 6,
+    },
+    tempPasswordHash: String,
+    tempPasswordExpiry: Date,
+    resetToken: String, // issued after temp password verified
+    resetTokenExpiry: Date,
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
-const User= mongoose.model("User", userSchema);
-export default User
+const User = mongoose.model("User", userSchema);
+export default User;
