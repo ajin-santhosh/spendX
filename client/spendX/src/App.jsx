@@ -8,11 +8,11 @@ export default function App() {
   return (
     <div>
 
-       {/* <LoginPage /> */}
+       <LoginPage />
        {/* <RegisterPage /> */}
        {/* <OtpVerifyPage /> */}
        {/* <EmailVerifyPage /> */}
-       <ForgetPassword />
+       {/* <ForgetPassword /> */}
     </div>
   )
 }

@@ -1,8 +1,6 @@
-import axios from "axios" 
-
+import axios from "axios";
 
 const sendPassMail = async (email, tempPassword) => {
-
   try {
     const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
@@ -13,7 +11,7 @@ const sendPassMail = async (email, tempPassword) => {
         },
         to: [{ email: email }],
         subject: "Temperory Password",
-        htmlContent: `<h1>Hello Your temp password is ${tempPassword}</h1>`
+        htmlContent: `<h1>Hello Your temp password is ${tempPassword}</h1>`,
       },
       {
         headers: {
@@ -25,12 +23,11 @@ const sendPassMail = async (email, tempPassword) => {
     );
 
     // console.log("MAIL SENT ✅", response.data);
-    return true
+    return true;
   } catch (err) {
     err.message = `Failed to send mail`;
     err.statusCode = 500;
-    throw err
+    throw err;
   }
-
-}
-export default sendPassMail
+};
+export default sendPassMail;
