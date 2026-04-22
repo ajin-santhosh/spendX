@@ -1,5 +1,5 @@
 import React from "react";
-import { GalleryVerticalEnd, RefreshCwIcon } from "lucide-react";
+import { RefreshCwIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +13,6 @@ import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 

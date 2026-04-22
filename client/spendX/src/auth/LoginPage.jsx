@@ -10,25 +10,10 @@ import {
 } from "@/components/ui/field";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Sun, Moon, Settings } from "lucide-react";
-import { useThemeStore } from "@/stores/themeStore";
-const triggerIcon = {
-  light: <Sun className="h-4 w-4" />,
-  dark: <Moon className="h-4 w-4" />,
-  system: <Settings className="h-4 w-4" />,
-};
+import ThemeToggle from "@/components/ThemeToggle";
 
 function LoginPage() {
-  const { theme, setTheme } = useThemeStore();
-  
+
   return (
     <>
       <div className="flex w-full items-center p-5">
@@ -38,39 +23,8 @@ function LoginPage() {
           </div>
           spendX.com
         </a>
-
-        <div className="ml-auto">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon">
-                {triggerIcon[theme]}
-              </Button>
-            </DropdownMenuTrigger>
-
-            <DropdownMenuContent className="w-10" align="end">
-              <DropdownMenuGroup>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  Dark
-                  <DropdownMenuShortcut>
-                    <Moon className="h-4 w-4" />
-                  </DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  Light
-                  <DropdownMenuShortcut>
-                    <Sun className="h-4 w-4" />
-                  </DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  System
-                  <DropdownMenuShortcut>
-                    <Settings className="h-4 w-4" />
-                  </DropdownMenuShortcut>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        
+        <ThemeToggle />
       </div>
       <div className="grid min-h-svh lg:grid-cols-2">
         <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -124,15 +78,15 @@ function LoginPage() {
             </div>
           </div>
         </div>
-        <div className="bg-muted relative hidden lg:block">
-         <img
-    src="/Spend X (1).png"
-    className="absolute inset-0 h-full w-full object-cover dark:hidden"
-  />
-  <img
-    src="/Dark Spend X.png"
-    className="absolute inset-0 h-full w-full object-cover hidden dark:block"
-  />
+        <div className=" relative hidden lg:block">
+          <img
+            src="https://res.cloudinary.com/djqxrh1gk/image/upload/v1776871980/Spend_X_1_-Photoroom_wrhzma.png"
+            className="absolute inset-0 h-full w-full object-cover dark:hidden"
+          />
+          <img
+            src="https://res.cloudinary.com/djqxrh1gk/image/upload/v1776871258/Dark_Spend_X-Photoroom_richbe.png"
+            className="absolute inset-0 h-full w-full object-cover hidden dark:block"
+          />
         </div>
       </div>
     </>
