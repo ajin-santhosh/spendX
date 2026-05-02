@@ -1,14 +1,17 @@
 import React from 'react'
-import LoginPage from './Features/auth/LoginPage'
-import RegisterPage from './Features/auth/RegisterPage'
-import ForgetPassword from './Features/auth/ForgetPassword'
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import PageLoader from './components/Loaders/PageLoader';
+const Login = lazy(()=> import("@/Features/auth/LoginPage"))
+const Register = lazy(() => import("@/Features/auth/RegisterPage"))
 export default function App() {
   return (
     <div>
 
        {/* <LoginPage /> */}
        {/* <RegisterPage /> */}
-       <ForgetPassword />
+       {/* <ForgetPassword /> */}
+       <PageLoader />
     </div>
   )
 }
