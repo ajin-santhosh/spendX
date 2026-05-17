@@ -11,6 +11,8 @@ import {
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
+import { Link } from "react-router-dom";
+
 function EmailVerifyPage({onNext}) {
   
   return (
@@ -44,14 +46,16 @@ function EmailVerifyPage({onNext}) {
               Verify
             </Button>
             <div className="text-sm text-muted-foreground">
-              Having trouble signing in?{" "}
-              <a
-                href="#"
+              Already Have a account?{" "}
+              <Link to= "/"
+            
                 className="underline underline-offset-4 transition-colors hover:text-primary"
               >
-                Contact support
-              </a>
+               Login
+              </Link>
             </div>
+            
+            
           </Field>
         </CardFooter>
       </Card>
