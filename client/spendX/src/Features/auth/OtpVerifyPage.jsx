@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/input-otp";
 
 function OtpVerifyPage( 
-  { onNext }
+  { onNext,onBack }
 ) {
   const [value, setValue] = React.useState("");
 
@@ -57,7 +57,7 @@ function OtpVerifyPage(
               </InputOTPGroup>
             </InputOTP>
             <FieldDescription>
-              <a href="#">I no longer have access to this email address.</a>
+              <a href="#"onClick={onBack}>I no longer have access to this email address.</a>
             </FieldDescription>
           </Field>
         </CardContent>
