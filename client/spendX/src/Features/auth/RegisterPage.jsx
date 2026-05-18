@@ -16,8 +16,8 @@ function RegisterPage() {
 
   return (
     <div className="w-full max-w-sm ">
-      <div className="p-3">
-        <Field className="w-full max-w-sm">
+      <div className="px-3 py-10">
+        <Field >
           {/* Header */}
           <FieldLabel
             htmlFor="progress-upload"
